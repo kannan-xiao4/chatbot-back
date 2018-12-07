@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func main(){
+func main() {
 
 	user := "root"
 	password := "secret"
@@ -20,10 +20,10 @@ func dropIfExistsAndCreateDatabase(
 	hostName string,
 	userName string,
 	password string,
-	dbName string){
+	dbName string) {
 
 	connect := fmt.Sprintf("%s:%s@tcp(%s)/", userName, password, hostName)
-	db,_ := gorm.Open("mysql", connect)
+	db, _ := gorm.Open("mysql", connect)
 
 	if existsDatabase(*db, dbName) {
 		dropDatabase(*db, dbName)
@@ -40,10 +40,10 @@ func existsDatabase(db gorm.DB, dbName string) bool {
 	return exist
 }
 
-func createDatabase(db gorm.DB, dbName string)  {
+func createDatabase(db gorm.DB, dbName string) {
 	db.Exec("CREATE DATABASE " + dbName)
 }
 
-func dropDatabase(db gorm.DB, dbName string)  {
+func dropDatabase(db gorm.DB, dbName string) {
 	db.Exec("DROP DATABASE " + dbName)
 }

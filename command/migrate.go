@@ -9,4 +9,5 @@ import (
 func main() {
 	db := database.Connect()
 	db.CreateTable(&models.User{})
+	db.CreateTable(&models.ChatMessage{})
 }

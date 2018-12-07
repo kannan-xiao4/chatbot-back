@@ -21,6 +21,16 @@
 
 - `http://localhost:8080/welcome` で起動確認
 
+## DB initialize
+- provision : 現存のDBを破棄して作り直す
+```
+go run command/provision.go
+```
+- migration : すでにDBがある状態でテーブルを作成する
+```
+go run command/migrate.go
+```
+
 ## Install
 - ディレクトリ構成は下記で
 ```$xslt
