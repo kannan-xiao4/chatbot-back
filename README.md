@@ -22,4 +22,19 @@
 - `http://localhost:8080/welcome` で起動確認
 
 ## Install
-- TBD
+- ディレクトリ構成は下記で
+```$xslt
+└── chatbot
+    └── src
+        └── chatbot-back
+            └── main.go
+```
+- GoLandの設定
+```$xslt
+GOROOT: インストール済みのものをプルダウンから選択
+GOPATH: 上記のディレクりのchatbot を選択
+dep: depを有効にし、プルダウンから選択
+```
+- depで依存解決
+    - `dep ensure`が実行できるので行う
+
