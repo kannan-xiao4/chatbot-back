@@ -1,8 +1,8 @@
 package app
 
 import (
+	"chatbot-back/handlers"
 	"github.com/gin-gonic/gin"
-	"github.com/kannan-xiao4/chatbot-back/handlers"
 )
 
 func RouteV1(app *gin.Engine) {

@@ -1,10 +1,10 @@
 package handlers
 
 import (
+	"chatbot-back/db"
+	"chatbot-back/models"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/kannan-xiao4/chatbot-back/db"
-	"github.com/kannan-xiao4/chatbot-back/models"
 	"net/http"
 )
 

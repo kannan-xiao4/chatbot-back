@@ -1,8 +1,8 @@
 package main
 
 import (
+	"chatbot-back/app"
 	_ "github.com/gin-gonic/gin"
-	"github.com/kannan-xiao4/chatbot-back/app"
 	_ "net/http"
 )
 
