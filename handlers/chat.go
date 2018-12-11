@@ -4,7 +4,6 @@ import (
 	"chatbot-back/repository"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"strconv"
 )
 
 type chatHandlerInterface interface {
@@ -20,18 +19,18 @@ type chatHandler struct {
 }
 
 func (h *chatHandler) GetMessages(c *gin.Context) {
-	n := c.Param("user_id")
 
-	id, err := strconv.ParseInt(n, 10, 64)
-	if err != nil {
-		c.JSON(400, err)
+	user := repository.NewUserRepository().GetByUID(c.GetString("uid"))
+
+	if user == nil {
+		c.JSON(404, gin.H{"error": http.StatusText(http.StatusNotFound)})
 		return
 	}
 
-	messages := repository.NewChatMessageRepository().GetByUserID(id)
+	messages := repository.NewChatMessageRepository().GetByUserID(user.Id)
 
 	if messages == nil {
-		c.JSON(404, gin.H{})
+		c.JSON(404, gin.H{"error": http.StatusText(http.StatusNotFound)})
 		return
 	}
 

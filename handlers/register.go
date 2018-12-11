@@ -3,6 +3,7 @@ package handlers
 import (
 	"chatbot-back/db"
 	"chatbot-back/models"
+	"chatbot-back/repository"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
 	"net/http"
@@ -21,13 +22,15 @@ type registerHandler struct {
 }
 
 func (h *registerHandler) RegisterUser(c *gin.Context) {
-	db := database.Connect()
+
 	user := new(models.User)
+
 	if err := c.BindJSON(&user); err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
-	db.Create(user)
+	newUser := repository.NewUserRepository().Persist(user)
+
 	c.JSON(http.StatusCreated, gin.H{"status": "ok"})
 }
 
