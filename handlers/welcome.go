@@ -18,7 +18,8 @@ type welcomeHandler struct {
 
 func (h *welcomeHandler) GetName(c *gin.Context) {
 	firstname := c.DefaultQuery("firstname", "Guest")
-	lastname := c.Query("lastname")
 
-	c.String(http.StatusOK, "Hello %s %s", firstname, lastname)
+	uid := c.GetString("uid")
+
+	c.String(http.StatusOK, "Hello %s %s", firstname, uid)
 }

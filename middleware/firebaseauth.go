@@ -47,6 +47,7 @@ func FirebaseAuth(c *gin.Context) {
 		return
 	}
 	log.Printf("Verified ID token: %v\n", token)
+	c.Set("uid", token.UID)
 }
 
 func unauthorized(c *gin.Context) {
