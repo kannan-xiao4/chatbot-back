@@ -2,6 +2,7 @@ package app
 
 import (
 	"chatbot-back/handlers"
+	"chatbot-back/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,9 +12,11 @@ func RouteV1(app *gin.Engine) {
 	chatHandler := handlers.NewChatHandler()
 	apiGroup := app.Group("api")
 	{
-		apiGroup.GET("/user/:name", helloHandler.GetName)
-		apiGroup.GET("/welcome", welcomeHandler.GetName)
-		apiGroup.GET("/chat/:user_id", chatHandler.GetMessages)
+		authorized := apiGroup.Group("/", middleware.FirebaseAuth)
+
+		authorized.GET("/user/:name", helloHandler.GetName)
+		authorized.GET("/welcome", welcomeHandler.GetName)
+		authorized.GET("/chat/:user_id", chatHandler.GetMessages)
 	}
 
 	registerHandler := handlers.NewRegisterHandler()
