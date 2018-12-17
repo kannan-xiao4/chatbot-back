@@ -16,7 +16,8 @@ func RouteV1(app *gin.Engine) {
 
 		authorized.GET("/user/:name", helloHandler.GetName)
 		authorized.GET("/welcome", welcomeHandler.GetName)
-		authorized.GET("/chat/:user_id", chatHandler.GetMessages)
+		authorized.GET("/chat", chatHandler.GetMessages)
+		authorized.POST("/chat", chatHandler.AddMessage)
 	}
 
 	registerHandler := handlers.NewRegisterHandler()

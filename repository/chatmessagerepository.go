@@ -37,7 +37,8 @@ func (m ChatMessageRepository) GetByUserID(id int64) *[]models.ChatMessage {
 func (m ChatMessageRepository) Persist(message models.ChatMessage) *models.ChatMessage {
 
 	db := database.Connect()
-	if db.Update(&message).RecordNotFound() {
+
+	if db.Create(&message).RecordNotFound() {
 		return nil
 	}
 	return &message

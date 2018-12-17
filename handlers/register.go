@@ -29,7 +29,7 @@ func (h *registerHandler) RegisterUser(c *gin.Context) {
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
-	newUser := repository.NewUserRepository().Persist(user)
+	repository.NewUserRepository().Persist(user)
 
 	c.JSON(http.StatusCreated, gin.H{"status": "ok"})
 }
