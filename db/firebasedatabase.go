@@ -14,7 +14,7 @@ func FirebaseConnect(path string) *db.Ref {
 	conf := &firebase.Config{DatabaseURL: "https://chatbot-base.firebaseio.com/"}
 
 	// Firebase SDK のセットアップ
-	opt := option.WithCredentialsFile("credentials/chatbot-base-firebase-adminsdk-b3c63-219633f486.json")
+	opt := option.WithCredentialsFile("envfiles/chatbot-base-firebase-adminsdk-b3c63-219633f486.json")
 	app, err := firebase.NewApp(ctx, conf, opt)
 	if err != nil {
 		panic(fmt.Sprintf("error initializing app: %v", err))

@@ -8,12 +8,13 @@ import (
 	"google.golang.org/api/option"
 	"log"
 	"net/http"
+	"os"
 )
 
 func FirebaseAuth(c *gin.Context) {
 
 	// Firebase SDK のセットアップ
-	opt := option.WithCredentialsFile("credentials/chatbot-base-firebase-adminsdk-b3c63-219633f486.json")
+	opt := option.WithCredentialsFile(os.Getenv("FIREBASE_ADMIN_SDK_FILENAME"))
 	app, err := firebase.NewApp(context.Background(), nil, opt)
 	if err != nil {
 		fmt.Printf("error initializing app: %v", err)

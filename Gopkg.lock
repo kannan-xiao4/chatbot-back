@@ -117,6 +117,14 @@
   revision = "04140366298a54a039076d798123ffa108fff46c"
 
 [[projects]]
+  digest = "1:ecd9aa82687cf31d1585d4ac61d0ba180e42e8a6182b85bd785fcca8dfeefc1b"
+  name = "github.com/joho/godotenv"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "23d116af351c84513e1946b527c88823e476be13"
+  version = "v1.3.0"
+
+[[projects]]
   digest = "1:3e551bbb3a7c0ab2a2bf4660e7fcad16db089fdcfbb44b0199e62838038623ea"
   name = "github.com/json-iterator/go"
   packages = ["."]
@@ -363,11 +371,13 @@
   analyzer-version = 1
   input-imports = [
     "firebase.google.com/go",
-    "firebase.google.com/go/auth",
+    "firebase.google.com/go/db",
     "github.com/fvbock/endless",
     "github.com/gin-gonic/gin",
     "github.com/go-sql-driver/mysql",
     "github.com/jinzhu/gorm",
+    "github.com/joho/godotenv",
+    "golang.org/x/net/context",
     "google.golang.org/api/option",
   ]
   solver-name = "gps-cdcl"
