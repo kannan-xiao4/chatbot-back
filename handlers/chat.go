@@ -4,6 +4,7 @@ import (
 	"chatbot-back/models"
 	"chatbot-back/repository"
 	"chatbot-back/request"
+	"chatbot-back/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -63,7 +64,9 @@ func (h *chatHandler) AddMessage(c *gin.Context) {
 
 	message := models.ChatMessage{UserId: userId, Message: postMessage.Message}
 
-	message.Response = "まだ未実装ですの"
+	response := service.Talk(postMessage.Message)
+
+	message.Response = response
 
 	repository.NewChatMessageRepository().Persist(message)
 
