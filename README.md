@@ -11,7 +11,7 @@
 - TBD
 
 ## Requirement
-- Go -
+- Go - https://github.com/golang/go
 - Dep - https://github.com/golang/dep
 - Gin - https://github.com/gin-gonic/gin
 
@@ -19,7 +19,7 @@
 - 以下のコマンドを実行
 `go run main.go`
 
-- `http://localhost:8080/welcome` で起動確認
+- `http://localhost:3000/welcome` で起動確認
 
 ## DB initialize
 - provision : 現存のDBを破棄して作り直す
