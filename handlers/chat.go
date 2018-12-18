@@ -58,11 +58,20 @@ func (h *chatHandler) AddMessage(c *gin.Context) {
 		return
 	}
 
+	meg := repository.NewMessageRepository()
+	meg.PushMessage(postMessage)
+
 	message := models.ChatMessage{UserId: userId, Message: postMessage.Message}
 
 	message.Response = "まだ未実装ですの"
 
 	repository.NewChatMessageRepository().Persist(message)
+
+	meg.PushMessage(request.PostMessage{
+		Message:  message.Response,
+		UserName: "bot",
+		Image:    "none",
+	})
 
 	c.JSON(http.StatusOK, message)
 }
