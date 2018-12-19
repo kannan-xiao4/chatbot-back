@@ -13,12 +13,12 @@ func RouteV1(app *gin.Engine) {
 
 	app.Use(middleware.CORS)
 
+	app.GET("/user/:name", helloHandler.GetName)
+	app.GET("/welcome", welcomeHandler.GetName)
+
 	apiGroup := app.Group("/api")
 	{
 		authorized := apiGroup.Group("/", middleware.FirebaseAuth)
-
-		authorized.GET("/user/:name", helloHandler.GetName)
-		authorized.GET("/welcome", welcomeHandler.GetName)
 		authorized.GET("/chat", chatHandler.GetMessages)
 		authorized.POST("/chat", chatHandler.AddMessage)
 	}
