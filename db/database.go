@@ -4,12 +4,13 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"os"
 )
 
-func Connect() *gorm.DB{
-	user := "root"
-	password := "secret"
-	host := "127.0.0.1:3306"
+func Connect() *gorm.DB {
+	user := os.Getenv("DATABASE_USER")
+	password := os.Getenv("DATABASE_PASSWARD")
+	host := os.Getenv("DATABASE_HOST_NAME")
 	dbName := "chatbot"
 	connect := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True", user, password, host, dbName)
 

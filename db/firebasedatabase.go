@@ -6,15 +6,16 @@ import (
 	"fmt"
 	"golang.org/x/net/context"
 	"google.golang.org/api/option"
+	"os"
 )
 
 func FirebaseConnect(path string) *db.Ref {
 
 	ctx := context.Background()
-	conf := &firebase.Config{DatabaseURL: "https://chatbot-base.firebaseio.com/"}
+	conf := &firebase.Config{DatabaseURL: os.Getenv("FIREBASE_DATABASE_URL")}
 
 	// Firebase SDK のセットアップ
-	opt := option.WithCredentialsFile("envfiles/chatbot-base-firebase-adminsdk-b3c63-219633f486.json")
+	opt := option.WithCredentialsFile(os.Getenv("FIREBASE_ADMIN_SDK_FILENAME"))
 	app, err := firebase.NewApp(ctx, conf, opt)
 	if err != nil {
 		panic(fmt.Sprintf("error initializing app: %v", err))

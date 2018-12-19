@@ -4,13 +4,14 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"os"
 )
 
 func main() {
 
-	user := "root"
-	password := "secret"
-	host := "127.0.0.1:3306"
+	user := os.Getenv("DATABASE_USER")
+	password := os.Getenv("DATABASE_PASSWARD")
+	host := os.Getenv("DATABASE_HOST_NAME")
 	dbName := "chatbot"
 
 	dropIfExistsAndCreateDatabase(host, user, password, dbName)
